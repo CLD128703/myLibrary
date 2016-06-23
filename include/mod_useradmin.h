@@ -6,14 +6,42 @@
 #ifndef __MOD_USER__
 #define __MOD_USER__
 
+/**< 用户类型数据 */
+typedef enum
+{
+    user_admin=0,
+    user_teacher=1,
+    user_student=2,
+} user_type;
+
+/**< 三类信息结构体 */
+typedef struct student_info
+{
+    // 班级、学号
+    char *class_name;
+    char *student_number;
+
+} student_info;
+
+typedef struct teacher_info
+{
+    // 老师信息
+    char *teacher_info;
+} teacher_info;
+
+typedef struct admin_info
+{
+    char *password; //密码
+} admin_info;
 
 
+typedef union user_info
+{
+    admin_info ai;
+    teacher_info ti;
+    student_info si;
+} user_info;
 
-
-
-
-
-<<<<<<< HEAD:include/mod_useradmin.h
 /**< 用户数据结构体 */
 typedef struct user_data
 {
@@ -41,7 +69,7 @@ user_data *create_user(char *name,user_type type,user_info info);
  *
  */
 
-user_data *get_user_by_id(int id);
+user_data *get_user_by(int id);
 
 /** \brief 根据用户ID获取用户数据
  *
@@ -50,7 +78,7 @@ user_data *get_user_by_id(int id);
  *
  */
 
-user_data *get_user_by_name(char *name);
+user_data *get_user_by(char *name);
 
 /** \brief 用文件储存用户
  *
@@ -66,7 +94,7 @@ int create_user_file(user_data *data);
  * \return 0 成功 -1 失败
  *
  */
-int delete_user_by_id(int id);
+int delete_user_by(int id);
 
 /** \brief 删除用户
  *
@@ -74,8 +102,6 @@ int delete_user_by_id(int id);
  * \return 0 成功 -1 失败
  *
  */
-int delete_user_by_name(char *name);
-=======
->>>>>>> parent of eb51643... 鐢ㄦ埛妯″潡璁捐瀹屾垚:mod_useradmin.h
+int delete_user_by(char *name);
 
 #endif // __MOD_USER__

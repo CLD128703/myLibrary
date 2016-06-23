@@ -3,9 +3,9 @@
 CC		:=	mingw32-gcc.exe
 CXX		:=	mingw32-g++.exe
 CFLAGS	:=	-g -O2 -std=c99 -I"include"
+RM		:=	rm.exe -f
 OBJ		:= 	main.o src/mod_useradmin.o src/mod_bookadmin.o src/mod_libraryadmin.o
 BIN		:=	mylibrary.exe
-
 Debug : $(BIN)
 
 $(BIN) : $(OBJ)
@@ -19,4 +19,5 @@ $(BIN) : $(OBJ)
 src/%.o : src/%.c
 	@echo "compare $< to $@"
 	$(CC) $(CFLAGS)  -c  $< -o $@
-
+cleanDebug:
+	$(RM) $(OBJ)
