@@ -3,7 +3,7 @@
 #include "mod_bookadmin.h"
 #include "mod_libraryadmin.h"
 #include "mod_libraryadmin.h"
-
+#include "log.h"
 
 int main()
 {
