@@ -34,6 +34,7 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Makefile.win" />
+		<Unit filename="include/log.h" />
 		<Unit filename="include/mod_bookadmin.h" />
 		<Unit filename="include/mod_libraryadmin.h" />
 		<Unit filename="include/mod_useradmin.h" />
