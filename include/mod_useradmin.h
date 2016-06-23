@@ -6,42 +6,14 @@
 #ifndef __MOD_USER__
 #define __MOD_USER__
 
-/**< 用户类型数据 */
-typedef enum
-{
-    user_admin=0,
-    user_teacher=1,
-    user_student=2,
-} user_type;
-
-/**< 三类信息结构体 */
-typedef struct student_info
-{
-    // 班级、学号
-    char *class_name;
-    char *student_number;
-
-} student_info;
-
-typedef struct teacher_info
-{
-    // 老师信息
-    char *teacher_info;
-} teacher_info;
-
-typedef struct admin_info
-{
-    char *password; //密码
-} admin_info;
 
 
-typedef union user_info
-{
-    admin_info ai;
-    teacher_info ti;
-    student_info si;
-} user_info;
 
+
+
+
+
+<<<<<<< HEAD:include/mod_useradmin.h
 /**< 用户数据结构体 */
 typedef struct user_data
 {
@@ -103,5 +75,7 @@ int delete_user_by_id(int id);
  *
  */
 int delete_user_by_name(char *name);
+=======
+>>>>>>> parent of eb51643... 鐢ㄦ埛妯″潡璁捐瀹屾垚:mod_useradmin.h
 
 #endif // __MOD_USER__
