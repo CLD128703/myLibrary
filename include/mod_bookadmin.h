@@ -8,20 +8,20 @@
 #ifndef __MOD_BOOK__
 #define __MOD_BOOK__
 /**********************************[[[ 相关结构体 ]]]************************************/
-typedef book_type
+typedef struct book_type
 {
     int index;          // 分类索引
     char *type_name;    // 分类名称
 } book_type;
 
-typedef book_stock
+typedef struct book_stock
 {
     int amount;         // 库存
     int lent;           // 借出
     int isbn;           // ISBN
-} book_info;
+} book_stock;
 
-typedef book_info
+typedef struct book_info
 {
     char *book_name;    // 书名
     char *isbn;         // 书籍的ISBN
@@ -30,7 +30,7 @@ typedef book_info
     char *publish;      // 出版社
     int publish_time;   // 出版时间 （Uinx时间戳）
     double cost;        // 金额
-};
+} book_info;
 /**********************************[[[ 书管理 ]]]**************************************/
 /** \brief 添加新书
  *

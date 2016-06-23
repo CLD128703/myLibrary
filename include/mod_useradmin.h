@@ -96,7 +96,7 @@ int create_user_file(user_data *data);
  * \return 0 成功 -1 失败
  *
  */
-int create_user_file(int id,user_data *data);
+int modify_user_file(int id,user_data *data);
 /** \brief 删除用户
  *
  * \param 用户ID
