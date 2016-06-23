@@ -6,12 +6,12 @@ typedef enum LOG_Level
 {
 LOG_DEBUG=0,
 LOG_INFO,LOG_WARN,LOG_ERROR,LOG_FATAL
-} DEBUG_Level;
+} LOG_Level;
 #ifndef DEBUG_FILE
 #define DEBUG_FILE "debug_out.log"
 #endif // DEBUG_FILE
 
-void log(LOG_Level level,const char *format, ...)
+void mlog(LOG_Level level,const char *format, ...)
 {
 #ifdef DEBUG
     static int first = 1;
@@ -20,7 +20,7 @@ void log(LOG_Level level,const char *format, ...)
     va_start(args, format);
     if (first==1)
         fprintf(file, "\nmLibrary debug file\n \tIn %s\n\t\tTime:%s\n", __DATE__, __TIME__);
-    fprintf(file, "\n[%d]>Time:%s\nInfo:\t",level,__TIME__);
+    fprintf(file, "\n[%d]>%s\t",level,__TIME__);
     vfprintf(File, format, args);
     fprintf(file, "\n");
     va_end(args);
