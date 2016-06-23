@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1466677892 source:d:\workspace\c\mylibrary\main.c
+	<stdio.h>
+	<stdlib.h>
+	"mod_bookadmin.h"
+	"mod_libraryadmin.h"
+	"mod_libraryadmin.h"
+
+1466680701 d:\workspace\c\mylibrary\mod_bookadmin.h
+
+1466677710 d:\workspace\c\mylibrary\mod_libraryadmin.h
+
+1466677734 source:d:\workspace\c\mylibrary\mod_bookadmin.cpp
+	"mod_bookadmin.h"
+
+1466677750 source:d:\workspace\c\mylibrary\mod_libraryadmin.cpp
+	"mod_libraryadmin.h"
+
+1466677476 source:d:\workspace\c\mylibrary\mod_useradmin.cpp
+	"mod_useradmin.h"
+
+1466681354 d:\workspace\c\mylibrary\mod_useradmin.h
+
