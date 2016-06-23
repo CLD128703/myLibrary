@@ -2,10 +2,11 @@
  * mod      用户管理模块
  * design   冯世昌
  * author   陈波
+ * info 该模块包含了用户的一些操作，包括 添加、删除、修改信息的功能
  */
 #ifndef __MOD_USER__
 #define __MOD_USER__
-
+/**********************************[[[ 相关结构体 ]]]**************************************/
 /**< 用户类型数据 */
 typedef enum
 {
@@ -45,11 +46,13 @@ typedef union user_info
 /**< 用户数据结构体 */
 typedef struct user_data
 {
-    int num; // 编号
+    int id; // 编号
     char *name; // 姓名
     user_type type;
     user_info info;
 } user_data;
+
+/**********************************[[[ 相关操作 ]]]**************************************/
 
 /** \brief 添加用户
  *
@@ -69,16 +72,15 @@ user_data *create_user(char *name,user_type type,user_info info);
  *
  */
 
-user_data *get_user_by_id(int id);
+user_data *get_user(int id);
 
-/** \brief 根据用户ID获取用户数据
+/** \brief 根据用户ID获取用户名字
  *
  * \param ID
- * \return 失败返回 null 指针
+ * \return 失败返回负数
  *
  */
-
-user_data *get_user_by_name(char *name);
+int user_id(char *name);
 
 /** \brief 用文件储存用户
  *
@@ -87,21 +89,20 @@ user_data *get_user_by_name(char *name);
  *
  */
 int create_user_file(user_data *data);
-
+/** \brief 修改用户信息
+ *
+ * \param 用户ID
+ * \param 用户数据
+ * \return 0 成功 -1 失败
+ *
+ */
+int create_user_file(int id,user_data *data);
 /** \brief 删除用户
  *
  * \param 用户ID
  * \return 0 成功 -1 失败
  *
  */
-int delete_user_by_id(int id);
-
-/** \brief 删除用户
- *
- * \param 用户名
- * \return 0 成功 -1 失败
- *
- */
-int delete_user_by_name(char *name);
+int delete_user(int id);
 
 #endif // __MOD_USER__
