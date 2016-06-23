@@ -69,7 +69,7 @@ user_data *create_user(char *name,user_type type,user_info info);
  *
  */
 
-user_data *get_user_by(int id);
+user_data *get_user_by_id(int id);
 
 /** \brief 根据用户ID获取用户数据
  *
@@ -78,7 +78,7 @@ user_data *get_user_by(int id);
  *
  */
 
-user_data *get_user_by(char *name);
+user_data *get_user_by_name(char *name);
 
 /** \brief 用文件储存用户
  *
@@ -94,7 +94,7 @@ int create_user_file(user_data *data);
  * \return 0 成功 -1 失败
  *
  */
-int delete_user_by(int id);
+int delete_user_by_id(int id);
 
 /** \brief 删除用户
  *
@@ -102,6 +102,6 @@ int delete_user_by(int id);
  * \return 0 成功 -1 失败
  *
  */
-int delete_user_by(char *name);
+int delete_user_by_name(char *name);
 
 #endif // __MOD_USER__
