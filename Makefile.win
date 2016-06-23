@@ -1,0 +1,22 @@
+# Project: 图书管理系统项目
+
+CC		:=	mingw32-gcc.exe
+CXX		:=	mingw32-g++.exe
+CFLAGS	:=	-g -O2 -std=c99 -I"include"
+OBJ		:= 	main.o src/mod_useradmin.o src/mod_bookadmin.o src/mod_libraryadmin.o
+BIN		:=	mylibrary.exe
+
+Debug : $(BIN)
+
+$(BIN) : $(OBJ)
+	@echo "compare $(OBJ)"
+	$(CC) $(CFLAGS)  -o  $(BIN) $(OBJ)
+
+%.o : %.c
+	@echo "compare $< to $@"
+	$(CC) $(CFLAGS)  -c  $< -o $@
+
+src/%.o : src/%.c
+	@echo "compare $< to $@"
+	$(CC) $(CFLAGS)  -c  $< -o $@
+
