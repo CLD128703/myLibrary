@@ -1,6 +1,5 @@
 /**
  * mod      用户管理模块
- * design   冯世昌
  * author   陈波
  * info 该模块包含了用户的一些操作，包括 添加、删除、修改信息的功能
  */
@@ -10,11 +9,15 @@
 /**< 用户类型数据 */
 typedef enum
 {
-    user_admin=0,
-    user_teacher=1,
-    user_student=2,
+    user_admin=0xff,
+    user_teacher=0,
+    user_student=1,
 } user_type;
-
+typedef enum
+{
+    user_active=0,
+    user_freeze=1,
+} user_statu;
 /**< 三类信息结构体 */
 typedef struct student_info
 {
@@ -52,7 +55,7 @@ typedef struct user_data
     user_info info;
 } user_data;
 
-/**********************************[[[ 相关操作 ]]]**************************************/
+/**********************************[[[ 相关操作 ]]]**********************************/
 
 /** \brief 添加用户
  *
@@ -80,7 +83,7 @@ user_data *get_user(int id);
  * \return 失败返回负数
  *
  */
-int user_id(char *name);
+int user2id(char *name);
 
 /** \brief 用文件储存用户
  *
@@ -97,6 +100,13 @@ int create_user_file(user_data *data);
  *
  */
 int modify_user_file(int id,user_data *data);
+/** \brief 用户挂失
+ *
+ * \param 用户ID
+ * \return 0 成功 -1 失败
+ *
+ */
+int lost_user(int id);
 /** \brief 删除用户
  *
  * \param 用户ID
@@ -104,5 +114,4 @@ int modify_user_file(int id,user_data *data);
  *
  */
 int delete_user(int id);
-
 #endif // __MOD_USER__
