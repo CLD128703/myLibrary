@@ -3,33 +3,37 @@
 CC			:=	mingw32-gcc.exe
 CFLAGS		:=	-g -O2 -std=c99 -Iinclude
 RM			:=	rm.exe -f
-LINKOBJS	:=	mod_useradmin.o mod_bookadmin.o mod_libraryadmin.o
-
-
+LINKOBJS	:=	mod_useradmin.o mod_bookadmin.o mod_libraryadmin.o mod_crypt.o
 
 # 模块测试
-
 BOOK		:=	test/test_book.exe
 USER		:=	test/test_user.exe
 LIBR		:=	test/test_library.exe
-RELE		:=	mylibrary-release.exe
+CRYP		:=	test/test_crypt.exe
+# 总测试
 DBG			:=	test_mylibrary.exe
+RELE		:=	mylibrary-release.exe
 
+# 编译对象文件
 BOBJ		:= 	mod_book_test.o mod_bookadmin.o
 UOBJ		:= 	mod_user_test.o mod_useradmin.o
 LOBJ		:= 	mod_library_test.o $(LINKOBJS)
 DOBJ		:= 	main.o $(LINKOBJS)
 ROBJ		:= 	$(DOBJ)
+COBJ		:=  mod_crypt_test.o mod_crypt.o
 
 # 搜索目录
 VPATH	= src:test
-# 目标
+
+# 目标版本
 Debug 			: 	$(DBG)
 Release			:	$(RELE)
 Test_Book 		: 	$(BOOK)
 Test_User 		: 	$(USER)
 Test_Library 	: 	$(LIBR)
+Test_Crypt 		: 	$(CRYP)
 
+# 编译命令
 $(BOOK) : $(BOBJ)
 	@echo "test mod book"
 	$(CC) $(CFLAGS)  -o  $(BOOK) $(BOBJ)
@@ -41,6 +45,10 @@ $(USER) : $(UOBJ)
 $(LIBR) : $(LOBJ)
 	@echo "test mod library"
 	$(CC) $(CFLAGS)  -o  $(LIBR) $(LOBJ)
+
+$(CRYP) : $(COBJ)
+	@echo "test mod crypt"
+	$(CC) $(CFLAGS)  -o  $(CRYP) $(COBJ)
 
 $(RELE) : $(ROBJ)
 	@echo "compare release $(ROBJ)"
@@ -54,14 +62,17 @@ $(DBG) : $(DOBJ)
 	@echo "compare $< to $@"
 	$(CC) $(CFLAGS)  -c  $< -o $@
 
-.PHONY : cleanDebug cleanRelease cleanTest_User cleanTest_Book cleanTest_Library
+.PHONY : clean
 
+clean: cleanDebug cleanRelease cleanTest_User cleanTest_Book cleanTest_Library
 cleanTest_Book:
 	$(RM) $(BOBJ)
 cleanTest_User:
 	$(RM) $(UOBJ)
 cleanTest_Library:
 	$(RM) $(LOBJ)
+cleanTest_Crypt:
+	$(RM) $(COBJ)
 cleanDebug:
 	$(RM) $(DOBJ)
 cleanRelease:
